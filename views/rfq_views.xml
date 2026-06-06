@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_vn_rfq_form" model="ir.ui.view">
+            <field name="name">vn.rfq.form</field>
+            <field name="model">vn.rfq</field>
+            <field name="arch" type="xml">
+                <form string="RFQ">
+                    <header>
+                        <button name="action_send" type="object" string="Send to Vendor"
+                            class="btn-primary"
+                            invisible="state != 'draft'"/>
+                        <button name="action_approve" type="object" string="Approve"
+                            class="btn-success"
+                            invisible="state != 'received'"/>
+                        <button name="action_reject" type="object" string="Reject"
+                            class="btn-danger"
+                            invisible="state != 'received'"/>
+                        <button name="action_reset" type="object" string="Reset to Draft"
+                            invisible="state != 'rejected'"/>
+                        <field name="state" widget="statusbar"
+                            statusbar_visible="draft,sent,received,approved,po_created"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button type="object" name="action_view_quotations"
+                                class="oe_stat_button" icon="fa-file-text-o"
+                                invisible="quotation_count == 0">
+                                <field name="quotation_count" widget="statinfo" string="Quotations"/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1><field name="name" readonly="1"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="vendor_id"/>
+                                <field name="deadline"/>
+                            </group>
+                        </group>
+                        <group string="Description">
+                            <field name="description" nolabel="1"/>
+                        </group>
+                        <field name="quotation_ids">
+                            <list>
+                                <field name="name"/>
+                                <field name="vendor_id"/>
+                                <field name="unit_price"/>
+                                <field name="quantity"/>
+                                <field name="total_amount"/>
+                                <field name="delivery_days"/>
+                                <field name="state"/>
+                            </list>
+                        </field>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_vn_rfq_list" model="ir.ui.view">
+            <field name="name">vn.rfq.list</field>
+            <field name="model">vn.rfq</field>
+            <field name="arch" type="xml">
+                <list string="RFQs"
+                    decoration-info="state == 'draft'"
+                    decoration-warning="state == 'sent'"
+                    decoration-success="state == 'approved'"
+                    decoration-danger="state == 'rejected'">
+                    <field name="name"/>
+                    <field name="vendor_id"/>
+                    <field name="deadline"/>
+                    <field name="quotation_count"/>
+                    <field name="state"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_vn_rfq_kanban" model="ir.ui.view">
+            <field name="name">vn.rfq.kanban</field>
+            <field name="model">vn.rfq</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="state">
+                    <field name="name"/>
+                    <field name="vendor_id"/>
+                    <field name="deadline"/>
+                    <field name="state"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click p-3">
+                                <strong><field name="name"/></strong>
+                                <div>Vendor: <field name="vendor_id"/></div>
+                                <div>Deadline: <field name="deadline"/></div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="action_vn_rfq" model="ir.actions.act_window">
+            <field name="name">RFQs</field>
+            <field name="res_model">vn.rfq</field>
+            <field name="view_mode">list,kanban,form</field>
+        </record>
+    </data>
+</odoo>

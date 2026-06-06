@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_vn_rfq" model="ir.sequence">
+            <field name="name">VendorNet RFQ</field>
+            <field name="code">vn.rfq</field>
+            <field name="prefix">RFQ/%(year)s/</field>
+            <field name="padding">4</field>
+        </record>
+        <record id="seq_vn_quotation" model="ir.sequence">
+            <field name="name">VendorNet Quotation</field>
+            <field name="code">vn.quotation</field>
+            <field name="prefix">QUO/%(year)s/</field>
+            <field name="padding">4</field>
+        </record>
+        <record id="seq_vn_po" model="ir.sequence">
+            <field name="name">VendorNet PO</field>
+            <field name="code">vn.po</field>
+            <field name="prefix">PO/%(year)s/</field>
+            <field name="padding">4</field>
+        </record>
+        <record id="seq_vn_invoice" model="ir.sequence">
+            <field name="name">VendorNet Invoice</field>
+            <field name="code">vn.invoice</field>
+            <field name="prefix">INV/%(year)s/</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>

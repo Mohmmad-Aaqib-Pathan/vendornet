@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vn_vendor,vn.vendor,model_vn_vendor,,1,1,1,1
+access_vn_rfq,vn.rfq,model_vn_rfq,,1,1,1,1
+access_vn_quotation,vn.quotation,model_vn_quotation,,1,1,1,1
+access_vn_po,vn.purchase.order,model_vn_purchase_order,,1,1,1,1
+access_vn_invoice,vn.invoice,model_vn_invoice,,1,1,1,1

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_vn_root" name="VendorNet" sequence="10"/>
+
+        <menuitem id="menu_vn_vendors" name="Vendors"
+            parent="menu_vn_root"
+            action="action_vn_vendor"
+            sequence="10"/>
+
+        <menuitem id="menu_vn_rfq" name="RFQs"
+            parent="menu_vn_root"
+            action="action_vn_rfq"
+            sequence="20"/>
+
+        <menuitem id="menu_vn_quotations" name="Quotations"
+            parent="menu_vn_root"
+            action="action_vn_quotation"
+            sequence="30"/>
+
+        <menuitem id="menu_vn_po" name="Purchase Orders"
+            parent="menu_vn_root"
+            action="action_vn_po"
+            sequence="40"/>
+
+        <menuitem id="menu_vn_invoices" name="Invoices"
+            parent="menu_vn_root"
+            action="action_vn_invoice"
+            sequence="50"/>
+    </data>
+</odoo>
